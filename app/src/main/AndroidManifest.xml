@@ -11,11 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ANCact"></activity>
-        <activity android:name=".OthersAct" />
-        <activity android:name=".InfoActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".CartActivity"
+            tools:ignore="ExtraText">
+            android:screenOrientation="portrait"
+        </activity>
+        <activity android:name=".LootersActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ANCact"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".OthersAct"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".InfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

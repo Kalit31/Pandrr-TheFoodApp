@@ -10,9 +10,11 @@ import java.io.InputStream;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private Button info_butt;
+    private Button others_butt;
+    private Button anc_butt;
+    private Button looters_butt;
 
-    Button info_butt;
-    Button others_butt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,8 @@ public class HomeActivity extends AppCompatActivity {
 
         info_butt = findViewById(R.id.info_button);
         others_butt= findViewById(R.id.others_butt);
+        anc_butt = findViewById(R.id.anc_butt);
+        looters_butt = findViewById(R.id.looters_butt);
 
         info_butt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +39,19 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(others);
             }
         });
-
+        anc_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ancIntent = new Intent(HomeActivity.this,ANCact.class);
+                startActivity(ancIntent);
+            }
+        });
+        looters_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent lootersIntent = new Intent(HomeActivity.this,LootersActivity.class);
+                startActivity(lootersIntent);
+            }
+        });
     }
 }

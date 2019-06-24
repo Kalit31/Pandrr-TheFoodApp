@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Food App</string>
+    <string name="anc">ANC</string>
+    <string name="looters">Looters</string>
+    <string name="others">Others</string>
+    <string name="menu">MENU</string>
 </resources>
