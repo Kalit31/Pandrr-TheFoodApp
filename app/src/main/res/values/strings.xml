@@ -4,4 +4,10 @@
     <string name="looters">Looters</string>
     <string name="others">Others</string>
     <string name="menu">MENU</string>
+    <string name="pandrr">Pandrr</string>
+    <string name="app_info">App Info</string>
+    <string name="info_about_app_here">Info about app here</string>
+    <string name="i_nfo_about_creators_here">I nfo about creators here</string>
+    <string name="creators">Creators</string>
+
 </resources>

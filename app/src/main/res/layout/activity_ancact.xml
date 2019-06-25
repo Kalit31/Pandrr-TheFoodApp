@@ -1,54 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ANCact"
-    android:padding="8dp">
+    android:padding="8dp"
+    tools:context=".ANCact">
 
 
     <TextView
         android:id="@+id/tV_anc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/text_underline"
         android:paddingBottom="8dp"
         android:singleLine="false"
         android:text="@string/anc"
         android:textColor="#FD9C33"
         android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 
     <Button
-        android:id="@+id/menu__anc_btn"
-        android:layout_width="250dp"
-        android:layout_height="76dp"
-        android:layout_alignParentBottom="true"
-         android:layout_marginBottom="30dp"
+        android:id="@+id/menu__looters_btn"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/menu_butt_bg"
-        android:text="@string/menu"
+        android:text="MENU"
         android:textColor="#FFFFFF"
-        android:textSize="32sp"
+        android:textSize="25sp"
         android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
     <Button
         android:id="@+id/cart_butt"
         android:layout_width="50dp"
         android:layout_height="52dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/foodcart_icon"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/tV_anc"
+        app:layout_constraintTop_toTopOf="@+id/tV_anc" />
 
-</RelativeLayout>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.107142857" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.87142857" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1.0000" />
+
+
+</android.support.constraint.ConstraintLayout>
