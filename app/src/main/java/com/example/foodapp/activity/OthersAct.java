@@ -1,7 +1,11 @@
-package com.example.foodapp;
+package com.example.foodapp.activity;
 
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+
+import com.example.foodapp.R;
 
 public class OthersAct extends AppCompatActivity {
 

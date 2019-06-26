@@ -1,4 +1,4 @@
-package com.example.foodapp;
+package com.example.foodapp.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.InputStream;
+import com.example.foodapp.R;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -49,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         looters_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent lootersIntent = new Intent(HomeActivity.this,LootersActivity.class);
+                Intent lootersIntent = new Intent(HomeActivity.this, LootersActivity.class);
                 startActivity(lootersIntent);
             }
         });

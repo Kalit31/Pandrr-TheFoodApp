@@ -13,19 +13,19 @@
         android:theme="@style/MyAppTheme"
         tools:node="replace"
         >
-        <activity android:name=".CartActivity"
+        <activity android:name=".activity.CartActivity"
                android:screenOrientation="portrait"/>
-        <activity android:name=".LootersActivity"
+        <activity android:name=".activity.LootersActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ANCact"
+        <activity android:name=".activity.ANCact"
             android:screenOrientation="portrait"/>
-        <activity android:name=".OthersAct"
+        <activity android:name=".activity.OthersAct"
             android:screenOrientation="portrait"/>
-        <activity android:name=".InfoActivity"
+        <activity android:name=".activity.InfoActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".HomeActivity"
+        <activity android:name=".activity.HomeActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
+        <activity android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

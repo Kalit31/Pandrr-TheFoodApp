@@ -10,4 +10,7 @@
     <string name="info_about_creators_here">Info about creators here</string>
     <string name="creators">Creators</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
