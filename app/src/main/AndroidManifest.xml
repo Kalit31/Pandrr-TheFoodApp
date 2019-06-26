@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.foodapp">
@@ -10,11 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:node="replace"
+        >
         <activity android:name=".CartActivity"
-            tools:ignore="ExtraText">
-            android:screenOrientation="portrait"
-        </activity>
+               android:screenOrientation="portrait"/>
         <activity android:name=".LootersActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".ANCact"
@@ -29,10 +29,8 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

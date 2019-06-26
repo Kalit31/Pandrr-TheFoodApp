@@ -79,5 +79,13 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="1.0000" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/looters_rv"
+        android:layout_width="395dp"
+        android:layout_height="560dp"
+        app:layout_constraintBottom_toTopOf="@+id/guide8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guide7" />
 
 </android.support.constraint.ConstraintLayout>
