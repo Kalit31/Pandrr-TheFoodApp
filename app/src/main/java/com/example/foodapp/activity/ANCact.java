@@ -1,8 +1,10 @@
 package com.example.foodapp.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,16 +24,20 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import static com.example.foodapp.activity.PopUpANC.PUBLIC_STATIC_STRING_IDENTIFIER;
+
+
 public class ANCact extends AppCompatActivity {
 
     private Button cart_butt;
+    private Button menu_butt;
     private RecyclerView recyclerView;
     private RecycleAdapter_ANC adapter;
     private ArrayList<Item_ANC> items;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myRef;
-    public static final String TAG = "Tag";
-
+    public static final int STATIC_INTEGER_VALUE=1;
+    private String catItem="Sandwiches";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,9 @@ public class ANCact extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         cart_butt = findViewById(R.id.cart_butt);
+        menu_butt = findViewById(R.id.menu_anc_btn);
+        recyclerView = findViewById(R.id.anc_rv);
+
         cart_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,19 +57,36 @@ public class ANCact extends AppCompatActivity {
             }
         });
 
-        recyclerView = findViewById(R.id.anc_rv);
-
         firebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = firebaseDatabase.getReference("ANC").child("Parathas");
-
         items = new ArrayList<>();
 
+        menu_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent popIntent = new Intent(ANCact.this, PopUpANC.class);
+                startActivityForResult(popIntent,STATIC_INTEGER_VALUE);
+            }
+        });
 
-     }
+
+    }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == STATIC_INTEGER_VALUE && resultCode == Activity.RESULT_OK)
+        {
+            catItem = data.getStringExtra(PUBLIC_STATIC_STRING_IDENTIFIER);
+        }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        myRef = firebaseDatabase.getReference("ANC").child(catItem);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -75,12 +101,11 @@ public class ANCact extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setAdapter(adapter);
-
                 }
-              catch (Exception e)
-               {
-                   Toast.makeText(getApplicationContext(), e.toString(),Toast.LENGTH_LONG).show();
-               }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), e.toString(),Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -89,7 +114,6 @@ public class ANCact extends AppCompatActivity {
             }
         });
 
-
-
     }
+
 }

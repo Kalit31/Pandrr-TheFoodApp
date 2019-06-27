@@ -12,5 +12,21 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="parathas">Parathas</string>
+    <string name="south_indian">South Indian</string>
+    <string name="sandwiches">Sandwiches</string>
+    <string name="maggi">Maggi</string>
+    <string name="snacks">Snacks</string>
+    <string name="chinese">Chinese</string>
+    <string name="indian">Indian</string>
+    <string name="tandoor">Tandoor</string>
+    <string name="beverages">Beverages</string>
+    <string name="burgers">Burgers</string>
+    <string name="hot_items">Hot Items</string>
+    <string name="mojito">Mojito</string>
+    <string name="pizzas">Pizzas</string>
+    <string name="shakes">Shakes</string>
+    <string name="subs">Subs</string>
+    <string name="wraps">Wraps</string>
 
 </resources>

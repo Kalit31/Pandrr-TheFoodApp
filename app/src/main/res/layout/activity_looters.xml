@@ -33,7 +33,7 @@
 
 
     <Button
-        android:id="@+id/menu__looters_btn"
+        android:id="@+id/menu_looters_btn"
         android:layout_width="175dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
@@ -80,7 +80,7 @@
         app:layout_constraintGuide_percent="1.0000" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/anc_rv"
+        android:id="@+id/looters_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
