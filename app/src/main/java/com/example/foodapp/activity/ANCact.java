@@ -3,20 +3,16 @@ package com.example.foodapp.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodapp.R;
-import com.example.foodapp.adapters.RecycleAdapter;
-import com.example.foodapp.fragments.FragANCParatha;
-import com.example.foodapp.models.Item;
+import com.example.foodapp.adapters.RecycleAdapter_ANC;
+import com.example.foodapp.models.Item_ANC;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,8 +26,8 @@ public class ANCact extends AppCompatActivity {
 
     private Button cart_butt;
     private RecyclerView recyclerView;
-    private RecycleAdapter adapter;
-    ArrayList<Item> items;
+    private RecycleAdapter_ANC adapter;
+    private ArrayList<Item_ANC> items;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myRef;
     public static final String TAG = "Tag";
@@ -72,14 +68,14 @@ public class ANCact extends AppCompatActivity {
                 try {
                     items.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Item item = ds.getValue(Item.class);
+                        Item_ANC item = ds.getValue(Item_ANC.class);
                         items.add(item);
                     }
-
-                    RecycleAdapter adapter = new RecycleAdapter(items);
+                    adapter = new RecycleAdapter_ANC(items);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setAdapter(adapter);
+
                 }
               catch (Exception e)
                {

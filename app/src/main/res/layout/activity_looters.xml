@@ -80,12 +80,15 @@
         app:layout_constraintGuide_percent="1.0000" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/looters_rv"
-        android:layout_width="395dp"
-        android:layout_height="560dp"
+        android:id="@+id/anc_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toTopOf="@+id/guide8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guide7" />
+
 
 </android.support.constraint.ConstraintLayout>
