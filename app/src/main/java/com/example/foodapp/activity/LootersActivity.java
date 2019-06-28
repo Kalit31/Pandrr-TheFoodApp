@@ -2,7 +2,6 @@ package com.example.foodapp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,9 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.foodapp.R;
-import com.example.foodapp.adapters.RecycleAdapter_ANC;
 import com.example.foodapp.adapters.RecycleAdapter_Looters;
-import com.example.foodapp.models.Item_ANC;
 import com.example.foodapp.models.Item_Looters;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -61,18 +58,14 @@ public class LootersActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         items = new ArrayList<>();
 
-        try {
-            menu_butt.setOnClickListener(new View.OnClickListener() {
+              menu_butt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent popintent = new Intent(LootersActivity.this, PopUpLooters.class);
                     startActivityForResult(popintent, STATIC_INTEGER_VALUE);
-                }
+                   }
             });
-        }catch (Exception e)
-        {
-            Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_SHORT).show();
-        }
+
 
     }
 

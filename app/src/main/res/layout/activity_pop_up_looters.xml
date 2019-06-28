@@ -15,77 +15,77 @@
         android:layout_height="wrap_content">
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline23"
+            android:id="@+id/gl1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.0909090909" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline24"
+            android:id="@+id/gl2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.1818181818" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline25"
+            android:id="@+id/gl3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.2727272727" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline26"
+            android:id="@+id/gl4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.3636363636" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline27"
+            android:id="@+id/gl5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.454545454545" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline28"
+            android:id="@+id/gl6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5454545454" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline29"
+            android:id="@+id/gl7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.6363636363" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline30"
+            android:id="@+id/gl8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.7272727272" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline31"
+            android:id="@+id/gl9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.8181818181" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline32"
+            android:id="@+id/gl10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.9090909090" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline33"
+            android:id="@+id/gl11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -101,11 +101,11 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/borders"
             android:text="@string/burgers"
-            app:layout_constraintBottom_toTopOf="@+id/guideline24"
-            app:layout_constraintTop_toTopOf="@+id/guideline23" />
+            app:layout_constraintBottom_toTopOf="@+id/gl2"
+            app:layout_constraintTop_toTopOf="@+id/gl1" />
 
         <Button
-            android:id="@+id/button_chinese"
+            android:id="@+id/button_chinese_loot"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginStart="32dp"
@@ -114,10 +114,10 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/borders"
             android:text="@string/chinese"
-            app:layout_constraintBottom_toTopOf="@+id/guideline25"
+            app:layout_constraintBottom_toTopOf="@+id/gl3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline24" />
+            app:layout_constraintTop_toTopOf="@+id/gl2" />
 
         <Button
             android:id="@+id/button_hotItem"
@@ -129,10 +129,10 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/borders"
             android:text="@string/hot_items"
-            app:layout_constraintBottom_toTopOf="@+id/guideline26"
+            app:layout_constraintBottom_toTopOf="@+id/gl4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline25" />
+            app:layout_constraintTop_toTopOf="@+id/gl3" />
 
         <Button
             android:id="@+id/button_mojito"
@@ -144,10 +144,10 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/borders"
             android:text="@string/mojito"
-            app:layout_constraintBottom_toTopOf="@+id/guideline27"
+            app:layout_constraintBottom_toTopOf="@+id/gl5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline26" />
+            app:layout_constraintTop_toTopOf="@+id/gl4" />
 
         <Button
             android:id="@+id/button_pizza"
@@ -159,10 +159,10 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/borders"
             android:text="@string/pizzas"
-            app:layout_constraintBottom_toTopOf="@+id/guideline28"
+            app:layout_constraintBottom_toTopOf="@+id/gl6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline27" />
+            app:layout_constraintTop_toTopOf="@+id/gl5" />
 
         <Button
             android:id="@+id/button_sandwich"
@@ -174,10 +174,10 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/borders"
             android:text="@string/sandwiches"
-            app:layout_constraintBottom_toTopOf="@+id/guideline29"
+            app:layout_constraintBottom_toTopOf="@+id/gl7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline28" />
+            app:layout_constraintTop_toTopOf="@+id/gl6" />
 
         <Button
             android:id="@+id/button_shakes"
@@ -189,11 +189,11 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/borders"
             android:text="@string/shakes"
-            app:layout_constraintBottom_toTopOf="@+id/guideline30"
+            app:layout_constraintBottom_toTopOf="@+id/gl8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline29"
-            tools:layout_editor_absoluteX="152dp" />
+            app:layout_constraintTop_toTopOf="@+id/gl7"
+            />
 
         <Button
             android:id="@+id/button_subs"
@@ -205,10 +205,10 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/borders"
             android:text="@string/subs"
-            app:layout_constraintBottom_toTopOf="@+id/guideline31"
+            app:layout_constraintBottom_toTopOf="@+id/gl9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline30" />
+            app:layout_constraintTop_toTopOf="@+id/gl8" />
 
         <Button
             android:id="@+id/button_wraps"
@@ -220,12 +220,10 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/borders"
             android:text="@string/wraps"
-            app:layout_constraintBottom_toTopOf="@+id/guideline32"
+            app:layout_constraintBottom_toTopOf="@+id/gl10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline31" />
-
-
+            app:layout_constraintTop_toTopOf="@+id/gl9" />
 
     </android.support.constraint.ConstraintLayout>
 

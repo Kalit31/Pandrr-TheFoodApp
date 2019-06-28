@@ -30,11 +30,11 @@ public class PopUpLooters extends AppCompatActivity {
         getWindow().setLayout((int) (width * .8), (int) (height * .6));
 
         Button burgers = findViewById(R.id.button_burgers);
-        Button chinese = findViewById(R.id.button_chinese);
+        Button chinese = findViewById(R.id.button_chinese_loot);
         Button hotItems = findViewById(R.id.button_hotItem);
         Button mojito = findViewById(R.id.button_mojito);
         Button pizza = findViewById(R.id.button_pizza);
-        Button sw = findViewById(R.id.button_sw);
+        Button sw = findViewById(R.id.button_sandwich);
         Button shakes = findViewById(R.id.button_shakes);
         Button subs = findViewById(R.id.button_subs);
         Button wraps = findViewById(R.id.button_wraps);
