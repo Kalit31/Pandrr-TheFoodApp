@@ -29,8 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/type"
-            android:text="type"
+            android:id="@+id/counter"
+            android:text="counter"
             android:gravity="center"
             />
 

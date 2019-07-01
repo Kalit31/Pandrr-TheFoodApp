@@ -36,7 +36,7 @@ public class RecycleAdapter_Looters extends RecyclerView.Adapter<RecycleAdapter_
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
             viewHolder.name.setText(items.get(i).getName());
             viewHolder.price.setText(items.get(i).getPrice());
-            viewHolder.type.setText(items.get(i).getType());
+            viewHolder.counter.setText(items.get(i).getCounter());
 
     }
 
@@ -47,13 +47,13 @@ public class RecycleAdapter_Looters extends RecyclerView.Adapter<RecycleAdapter_
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name,price,type;
+        TextView name,price,counter;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             price = itemView.findViewById(R.id.price);
-            type = itemView.findViewById(R.id.type);
+            counter = itemView.findViewById(R.id.counter);
         }
     }
 }

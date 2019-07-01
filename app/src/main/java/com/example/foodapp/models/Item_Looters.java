@@ -2,16 +2,18 @@ package com.example.foodapp.models;
 
 public class Item_Looters
 {
-    String name,price,type,code;
+    String name,price,counter,code;
+    boolean type;
 
     public Item_Looters() {
     }
 
-    public Item_Looters(String name, String price, String type,String code) {
+    public Item_Looters(String name, String price, boolean type,String code, String counter) {
         this.name = name;
         this.price = price;
         this.type = type;
         this.code = code;
+        this.counter = counter;
     }
 
     public String getName() {
@@ -30,11 +32,11 @@ public class Item_Looters
         this.price = price;
     }
 
-    public String getType() {
+    public boolean getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(boolean type) {
         this.type = type;
     }
 
@@ -45,4 +47,14 @@ public class Item_Looters
     public void setCode(String code) {
         this.code = code;
     }
+
+    public String getCounter() {
+        return counter;
+    }
+
+    public void setCounter(String counter) {
+        this.counter = counter;
+    }
+
+
 }
