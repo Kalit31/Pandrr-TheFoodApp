@@ -3,6 +3,8 @@ package com.example.foodapp.models;
 public class Item_Looters
 {
     String name,price,counter,code;
+
+
     boolean type;
 
     public Item_Looters() {
@@ -15,6 +17,7 @@ public class Item_Looters
         this.code = code;
         this.counter = counter;
     }
+
 
     public String getName() {
         return name;

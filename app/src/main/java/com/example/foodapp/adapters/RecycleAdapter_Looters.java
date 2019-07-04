@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.foodapp.R;
@@ -37,7 +38,10 @@ public class RecycleAdapter_Looters extends RecyclerView.Adapter<RecycleAdapter_
             viewHolder.name.setText(items.get(i).getName());
             viewHolder.price.setText(items.get(i).getPrice());
             viewHolder.counter.setText(items.get(i).getCounter());
-
+            if(items.get(i).getType())
+                viewHolder.veg_icn.setImageResource(R.drawable.veg);
+            else
+                viewHolder.veg_icn.setImageResource(R.drawable.non_veg);
     }
 
     @Override
@@ -48,12 +52,14 @@ public class RecycleAdapter_Looters extends RecyclerView.Adapter<RecycleAdapter_
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView name,price,counter;
+        ImageView veg_icn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             price = itemView.findViewById(R.id.price);
             counter = itemView.findViewById(R.id.counter);
+            veg_icn = itemView.findViewById(R.id.vegetarian_image);
         }
     }
 }
