@@ -1,50 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/linear_layout"
-    android:layout_height="125dp"
-    android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/borders_item"
+    android:clipToPadding="true"
+    android:orientation="horizontal"
+    android:paddingRight="20dp">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/veg_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/item"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:orientation="vertical">
-
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="name"
-            android:textAllCaps="false"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp"
-            android:layout_weight="2"/>
-
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="price"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/counter"
-            android:text="counter"
-            android:gravity="center"
-            />
-
-        </LinearLayout>
-        <ImageView
-            android:id="@+id/vegetarian_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_weight="0.5"/>
+            android:layout_weight="5"
+            android:gravity="center|left"
+            android:text="@string/item_name"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/add_butt"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:background="@drawable/add_butt"
+            android:gravity="center"
+            android:text="@string/add"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 </LinearLayout>

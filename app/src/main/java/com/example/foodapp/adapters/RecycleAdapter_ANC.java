@@ -35,8 +35,8 @@ public class RecycleAdapter_ANC extends RecyclerView.Adapter<RecycleAdapter_ANC.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
             viewHolder.name.setText(items.get(i).getName());
-            viewHolder.price.setText(items.get(i).getPrice());
-            viewHolder.counter.setText(items.get(i).getCounter());
+      //      viewHolder.price.setText("Price: "+items.get(i).getPrice());
+        //    viewHolder.counter.setText("Counter: "+items.get(i).getCounter());
         if(items.get(i).getType())
             viewHolder.veg_icn.setImageResource(R.drawable.veg);
         else
@@ -56,10 +56,10 @@ public class RecycleAdapter_ANC extends RecyclerView.Adapter<RecycleAdapter_ANC.
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.name);
-            price = itemView.findViewById(R.id.price);
-            counter = itemView.findViewById(R.id.counter);
-            veg_icn = itemView.findViewById(R.id.vegetarian_image);
+            name = itemView.findViewById(R.id.item);
+           // price = itemView.findViewById(R.id.price);
+            //counter = itemView.findViewById(R.id.counter);
+            veg_icn = itemView.findViewById(R.id.veg_icon);
         }
     }
 }

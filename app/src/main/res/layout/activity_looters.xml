@@ -1,36 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
-    tools:context=".activity.LootersActivity">
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    android:padding="10dp">
 
 
-    <TextView
-        android:id="@+id/tV_looters"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="8dp"
+        android:layout_weight="0.11"
         android:background="@drawable/text_underline"
-        android:paddingBottom="8dp"
-        android:singleLine="false"
-        android:text="@string/looters"
-        android:textColor="#FD9C33"
-        android:textSize="40sp"
-        android:textStyle="bold"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tV_looters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="4"
+            android:singleLine="false"
+            android:text="@string/looters"
+            android:textColor="#FD9C33"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            />
 
-        app:layout_constraintBottom_toTopOf="@+id/guide7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <Button
+            android:id="@+id/cart_butt"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/foodcart_icon"
+            android:gravity="center" />
+    </LinearLayout>
 
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/looters_rv"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="0.74"
+        />
     <Button
         android:id="@+id/menu_looters_btn"
         android:layout_width="175dp"
@@ -42,52 +58,8 @@
         android:textColor="#FFFFFF"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guide9"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guide8" />
+        android:layout_gravity="center"
+        android:layout_weight="0.15"
+        />
 
-    <Button
-        android:id="@+id/cart_butt"
-        android:layout_width="50dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/foodcart_icon"
-        app:layout_constraintEnd_toEndOf="@+id/tV_looters"
-        app:layout_constraintTop_toTopOf="@+id/tV_looters" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guide7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.107142857" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guide8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.87142857" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guide9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="1.0000" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/looters_rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintBottom_toTopOf="@+id/guide8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guide7" />
-
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
