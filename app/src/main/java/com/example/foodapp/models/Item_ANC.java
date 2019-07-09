@@ -2,19 +2,28 @@ package com.example.foodapp.models;
 
 public class Item_ANC
 {
-    String name,price,counter;
-    String itemCount ="0";
-      boolean type;
+    private String name,price,counter,code;
+    private String itemCount ="0";
+    private boolean type;
 
     public Item_ANC() {
     }
 
-    public Item_ANC(String name, String price, boolean type, String counter, String itemCount) {
+    public Item_ANC(String name, String price, boolean type, String counter, String itemCount, String code) {
         this.name = name;
         this.price = price;
         this.type = type;
         this.counter = counter;
         this.itemCount = itemCount;
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {

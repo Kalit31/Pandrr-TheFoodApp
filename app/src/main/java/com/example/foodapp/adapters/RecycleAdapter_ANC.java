@@ -1,5 +1,7 @@
 package com.example.foodapp.adapters;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -22,12 +24,14 @@ public class RecycleAdapter_ANC extends RecyclerView.Adapter<RecycleAdapter_ANC.
 {
 
     private ArrayList<Item_ANC> items;
+    private SharedPreferences sharedPreferences;
 
-
-    public RecycleAdapter_ANC(ArrayList<Item_ANC> items)
+    public RecycleAdapter_ANC(ArrayList<Item_ANC> items, Context context)
     {
         this.items = items;
+        sharedPreferences = context.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -50,28 +54,56 @@ public class RecycleAdapter_ANC extends RecyclerView.Adapter<RecycleAdapter_ANC.
         else
             viewHolder.veg_icn.setImageResource(R.drawable.non_veg);
 
-        // Show the add button if item not added
-        if(Objects.equals(items.get(i).getItemCount(), "0"))
-        {
-            viewHolder.add_butt.setVisibility(Button.VISIBLE);
+        if (sharedPreferences.getInt(items.get(i).getCode(), 0) == 0) {
+            viewHolder.add_butt.setVisibility(View.VISIBLE);
             viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
-        }
-        else
-        {
-            viewHolder.add_butt.setVisibility(Button.INVISIBLE);
+        } else {
+            viewHolder.add_butt.setVisibility(View.INVISIBLE);
             viewHolder.item_count_layout.setVisibility(View.VISIBLE);
-            viewHolder.countView.setText(items.get(i).getItemCount());
+            viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 1)));
+
         }
 
         viewHolder.add_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewHolder.add_butt.setVisibility(Button.INVISIBLE);
+                viewHolder.add_butt.setVisibility(View.INVISIBLE);
                 viewHolder.item_count_layout.setVisibility(View.VISIBLE);
-                items.get(i).setItemCount("1");
-                viewHolder.countView.setText("1");
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+                edit.putInt(items.get(i).getCode(), 1);
+                edit.apply();
+                viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0 )));
+
             }
         });
+
+        viewHolder.plus_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editPlus = sharedPreferences.edit();
+                editPlus.putInt(items.get(i).getCode(), sharedPreferences.getInt(items.get(i).getCode(),0)+1);
+                editPlus.apply();
+                viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0 )));
+            }
+        });
+        viewHolder.minus_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editMinus = sharedPreferences.edit();
+                editMinus.putInt(items.get(i).getCode(), sharedPreferences.getInt(items.get(i).getCode(),0)-1);
+                editMinus.apply();
+                if(sharedPreferences.getInt(items.get(i).getCode(), 0 ) <= 0)
+                {
+                    viewHolder.add_butt.setVisibility(View.VISIBLE);
+                    viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0)));
+                }
+            }
+        });
+
+
 
     }
 

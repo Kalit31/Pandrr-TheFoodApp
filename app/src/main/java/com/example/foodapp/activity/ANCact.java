@@ -98,7 +98,7 @@ public class ANCact extends AppCompatActivity {
                         Item_ANC item = ds.getValue(Item_ANC.class);
                         items.add(item);
                     }
-                    adapter = new RecycleAdapter_ANC(items);
+                    adapter = new RecycleAdapter_ANC(items, getApplicationContext());
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setAdapter(adapter);
