@@ -1,6 +1,7 @@
 package com.example.foodapp.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,8 +29,7 @@ import static com.example.foodapp.activity.PopUpANC.PUBLIC_STATIC_STRING_IDENTIF
 
 public class ANCact extends AppCompatActivity {
 
-    private Button cart_butt;
-    private Button menu_butt;
+    private Button cart_butt,menu_butt;
     private RecyclerView recyclerView;
     private RecycleAdapter_ANC adapter;
     private ArrayList<Item_ANC> items;
@@ -37,6 +37,8 @@ public class ANCact extends AppCompatActivity {
     DatabaseReference myRef;
     public static final int STATIC_INTEGER_VALUE=1;
     private String catItem="Sandwiches";
+    private ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +68,7 @@ public class ANCact extends AppCompatActivity {
                 startActivityForResult(popIntent,STATIC_INTEGER_VALUE);
             }
         });
-
+        progressDialog = new ProgressDialog(ANCact.this);
 
     }
 
@@ -79,12 +81,12 @@ public class ANCact extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
 
-
+        progressDialog.setMessage("Fetching menu");
+        progressDialog.show();
         myRef = firebaseDatabase.getReference("ANC").child(catItem);
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -100,6 +102,8 @@ public class ANCact extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setAdapter(adapter);
+                    progressDialog.dismiss();
+
                 }
                 catch (Exception e)
                 {
@@ -112,7 +116,5 @@ public class ANCact extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),databaseError.toString(),Toast.LENGTH_LONG).show();
             }
         });
-
     }
-
 }

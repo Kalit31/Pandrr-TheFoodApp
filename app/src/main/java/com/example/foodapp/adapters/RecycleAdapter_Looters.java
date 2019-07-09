@@ -1,6 +1,11 @@
 package com.example.foodapp.adapters;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +14,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodapp.R;
-import com.example.foodapp.models.Item_ANC;
 import com.example.foodapp.models.Item_Looters;
 
 import java.util.ArrayList;
@@ -19,11 +24,13 @@ import java.util.ArrayList;
 public class RecycleAdapter_Looters extends RecyclerView.Adapter<RecycleAdapter_Looters.ViewHolder> {
 
     private ArrayList<Item_Looters> items;
+    private SharedPreferences sharedPreferences;
 
-
-    public RecycleAdapter_Looters(ArrayList<Item_Looters> items) {
-        this.items = items;
+    public RecycleAdapter_Looters(ArrayList<Item_Looters> items, Context context) {
+                this.items = items;
+                sharedPreferences = context.getSharedPreferences("MyPref",Context.MODE_PRIVATE);
     }
+
 
     @NonNull
     @Override
@@ -34,56 +41,70 @@ public class RecycleAdapter_Looters extends RecyclerView.Adapter<RecycleAdapter_
         return vh;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
+
+        // Set item name
         viewHolder.name.setText(items.get(i).getName());
-        // viewHolder.price.setText(items.get(i).getPrice());
-        // viewHolder.counter.setText(items.get(i).getCounter());
+
+        // set vegetarian icon
         if (items.get(i).getType())
             viewHolder.veg_icn.setImageResource(R.drawable.veg);
         else
             viewHolder.veg_icn.setImageResource(R.drawable.non_veg);
 
-            viewHolder.add_butt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    viewHolder.add_butt.setVisibility(Button.INVISIBLE);
-                    viewHolder.item_count_layout.setVisibility(View.VISIBLE);
-                    String count = viewHolder.countView.getText().toString();
-                    int c = Integer.parseInt(count);
-                    c = c + 1;
-                    viewHolder.countView.setText(Integer.toString(c));
 
-                }
-            });
+
+        if (sharedPreferences.getInt(items.get(i).getCode(), 0) == 0) {
+            viewHolder.add_butt.setVisibility(View.VISIBLE);
+            viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
+        } else {
+            viewHolder.add_butt.setVisibility(View.INVISIBLE);
+            viewHolder.item_count_layout.setVisibility(View.VISIBLE);
+            viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 1)));
+
+        }
+
+        viewHolder.add_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewHolder.add_butt.setVisibility(View.INVISIBLE);
+                viewHolder.item_count_layout.setVisibility(View.VISIBLE);
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+                edit.putInt(items.get(i).getCode(), 1);
+                edit.apply();
+                viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0 )));
+
+            }
+        });
+
         viewHolder.plus_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String count = viewHolder.countView.getText().toString();
-                int c = Integer.parseInt(count);
-                c = c + 1;
-                viewHolder.countView.setText(Integer.toString(c));
-                            }
+                SharedPreferences.Editor editPlus = sharedPreferences.edit();
+                editPlus.putInt(items.get(i).getCode(), sharedPreferences.getInt(items.get(i).getCode(),0)+1);
+                editPlus.apply();
+                viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0 )));
+            }
         });
         viewHolder.minus_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String count = viewHolder.countView.getText().toString();
-                if(count.equals("1"))
+                SharedPreferences.Editor editMinus = sharedPreferences.edit();
+                editMinus.putInt(items.get(i).getCode(), sharedPreferences.getInt(items.get(i).getCode(),0)-1);
+                editMinus.apply();
+                if(sharedPreferences.getInt(items.get(i).getCode(), 0 ) <= 0)
                 {
-                    viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
                     viewHolder.add_butt.setVisibility(View.VISIBLE);
+                    viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
                 }
-                else{
-                    int c = Integer.parseInt(count);
-                    c = c - 1;
-                    viewHolder.countView.setText(Integer.toString(c));
-
+                else {
+                    viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0)));
                 }
             }
         });
-
     }
 
     @Override
@@ -93,7 +114,7 @@ public class RecycleAdapter_Looters extends RecyclerView.Adapter<RecycleAdapter_
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, countView, price, counter;
+        TextView name, countView;
         ImageView veg_icn;
         LinearLayout item_count_layout;
         Button add_butt, plus_butt, minus_butt;
@@ -102,8 +123,6 @@ public class RecycleAdapter_Looters extends RecyclerView.Adapter<RecycleAdapter_
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.item);
-            //    price = itemView.findViewById(R.id.price);
-            //  counter = itemView.findViewById(R.id.counter);
             veg_icn = itemView.findViewById(R.id.veg_icon);
             add_butt = itemView.findViewById(R.id.add_butt);
             plus_butt = itemView.findViewById(R.id.plus_butt);

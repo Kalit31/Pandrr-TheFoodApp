@@ -1,6 +1,7 @@
 package com.example.foodapp.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -37,7 +38,7 @@ public class LootersActivity extends AppCompatActivity {
     private String catItem="Pizzas";
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myRef;
-
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class LootersActivity extends AppCompatActivity {
                 startActivity(cartIntent);
             }
         });
+
         menu_butt = findViewById(R.id.menu_looters_btn);
         recyclerView = findViewById(R.id.looters_rv);
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -65,6 +67,8 @@ public class LootersActivity extends AppCompatActivity {
                     startActivityForResult(popintent, STATIC_INTEGER_VALUE);
                    }
             });
+
+              progressDialog = new ProgressDialog(LootersActivity.this);
 
 
     }
@@ -82,6 +86,8 @@ public class LootersActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        progressDialog.setMessage("Fetching menu");
+        progressDialog.show();
         myRef = firebaseDatabase.getReference("Looters").child(catItem);
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -93,10 +99,11 @@ public class LootersActivity extends AppCompatActivity {
                         Item_Looters item = ds.getValue(Item_Looters.class);
                         items.add(item);
                     }
-                    adapter = new RecycleAdapter_Looters(items);
+                    adapter = new RecycleAdapter_Looters(items, getApplicationContext());
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setAdapter(adapter);
+                    progressDialog.dismiss();
 
                 }
                 catch (Exception e)
