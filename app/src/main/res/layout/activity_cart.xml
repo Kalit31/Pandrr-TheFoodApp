@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    android:orientation="vertical"
     tools:context=".activity.CartActivity"
     >
 
-
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/cart_b"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_conversion_wrapHeight="343"
-        tools:layout_conversion_wrapWidth="280" />
+            android:id="@+id/textView6"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.075"
+            android:background="@drawable/cart_b"
+        android:gravity="center"
+    />
 
     <TextView
         android:id="@+id/textView7"
@@ -30,16 +26,24 @@
         android:layout_height="3dp"
         android:layout_marginTop="0dp"
         android:background="#2BD5F8"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:layout_conversion_wrapHeight="11"
-        tools:layout_conversion_wrapWidth="1050" />
+        android:layout_gravity="center"
+        android:layout_marginBottom="0dp"
+        android:layout_weight="0.005"
+        android:gravity="center"
+    />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.80"
+        android:padding="16dp"
+        />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="110dp"
+        android:layout_gravity="bottom"
         android:layout_marginTop="8dp"
         android:background="@drawable/cart_text_view"
         android:gravity="center"
@@ -47,28 +51,6 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        tools:layout_conversion_wrapHeight="420"
-        tools:layout_conversion_wrapWidth="1440" />
+        android:layout_weight="0.05"/>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2142857" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.84285714" />
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="1.00"
-        android:id="@+id/guideline6"/>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.foodapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -15,20 +16,22 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.foodapp.R;
-import com.example.foodapp.models.Item_ANC;
+import com.example.foodapp.helpers.DatabaseHelper;
+import com.example.foodapp.models.Item;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class RecycleAdapter_ANC extends RecyclerView.Adapter<RecycleAdapter_ANC.ViewHolder>
+public class RecycleAdapterItem extends RecyclerView.Adapter<RecycleAdapterItem.ViewHolder>
 {
 
-    private ArrayList<Item_ANC> items;
+    private ArrayList<Item> items;
     private SharedPreferences sharedPreferences;
-
-    public RecycleAdapter_ANC(ArrayList<Item_ANC> items, Context context)
+    private Context context;
+    private DatabaseHelper db;
+    public RecycleAdapterItem(ArrayList<Item> items, Context context)
     {
         this.items = items;
+        this.context = context;
         sharedPreferences = context.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
     }
 
@@ -43,7 +46,8 @@ public class RecycleAdapter_ANC extends RecyclerView.Adapter<RecycleAdapter_ANC.
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, @SuppressLint("RecyclerView") final int i) {
+        db = new DatabaseHelper(context);
 
         //Set Item Name
         viewHolder.name.setText(items.get(i).getName());
@@ -54,57 +58,31 @@ public class RecycleAdapter_ANC extends RecyclerView.Adapter<RecycleAdapter_ANC.
         else
             viewHolder.veg_icn.setImageResource(R.drawable.non_veg);
 
-        if (sharedPreferences.getInt(items.get(i).getCode(), 0) == 0) {
-            viewHolder.add_butt.setVisibility(View.VISIBLE);
-            viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
-        } else {
-            viewHolder.add_butt.setVisibility(View.INVISIBLE);
-            viewHolder.item_count_layout.setVisibility(View.VISIBLE);
-            viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 1)));
-
-        }
 
         viewHolder.add_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 viewHolder.add_butt.setVisibility(View.INVISIBLE);
                 viewHolder.item_count_layout.setVisibility(View.VISIBLE);
-                SharedPreferences.Editor edit = sharedPreferences.edit();
-                edit.putInt(items.get(i).getCode(), 1);
-                edit.apply();
-                viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0 )));
-
+                db.putElement(items.get(i));
             }
         });
 
         viewHolder.plus_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editPlus = sharedPreferences.edit();
-                editPlus.putInt(items.get(i).getCode(), sharedPreferences.getInt(items.get(i).getCode(),0)+1);
-                editPlus.apply();
-                viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0 )));
+                int q = items.get(i).getItemCount();
+                items.get(i).setItemCount(q+1);
+
             }
         });
         viewHolder.minus_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editMinus = sharedPreferences.edit();
-                editMinus.putInt(items.get(i).getCode(), sharedPreferences.getInt(items.get(i).getCode(),0)-1);
-                editMinus.apply();
-                if(sharedPreferences.getInt(items.get(i).getCode(), 0 ) <= 0)
-                {
-                    viewHolder.add_butt.setVisibility(View.VISIBLE);
-                    viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
-                }
-                else {
-                    viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0)));
-                }
+                int q = items.get(i).getItemCount();
+                items.get(i).setItemCount(q-1);
             }
         });
-
-
-
     }
 
     @Override
@@ -131,3 +109,39 @@ public class RecycleAdapter_ANC extends RecyclerView.Adapter<RecycleAdapter_ANC.
         }
     }
 }
+
+
+
+//                SharedPreferences.Editor editMinus = sharedPreferences.edit();
+//                editMinus.putInt(items.get(i).getCode(), sharedPreferences.getInt(items.get(i).getCode(),0)-1);
+//                editMinus.apply();
+//                if(sharedPreferences.getInt(items.get(i).getCode(), 0 ) <= 0)
+//                {
+//                    viewHolder.add_butt.setVisibility(View.VISIBLE);
+//                    viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
+//                }
+//                else {
+//                    viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0)));
+//                }
+
+//                SharedPreferences.Editor editPlus = sharedPreferences.edit();
+//                editPlus.putInt(items.get(i).getCode(), sharedPreferences.getInt(items.get(i).getCode(),0)+1);
+//                editPlus.apply();
+//                viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0 )));
+
+//viewHolder.add_butt.setVisibility(View.INVISIBLE);
+////                viewHolder.item_count_layout.setVisibility(View.VISIBLE);
+////                SharedPreferences.Editor edit = sharedPreferences.edit();
+////                edit.putInt(items.get(i).getCode(), 1);
+////                edit.apply();
+////                viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0 )));
+
+//if (sharedPreferences.getInt(items.get(i).getCode(), 0) == 0) {
+////            viewHolder.add_butt.setVisibility(View.VISIBLE);
+////            viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
+////        } else {
+////            viewHolder.add_butt.setVisibility(View.INVISIBLE);
+////            viewHolder.item_count_layout.setVisibility(View.VISIBLE);
+////            viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 1)));
+////
+////        }

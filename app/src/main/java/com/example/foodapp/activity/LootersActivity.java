@@ -14,8 +14,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.foodapp.R;
-import com.example.foodapp.adapters.RecycleAdapter_Looters;
-import com.example.foodapp.models.Item_Looters;
+import com.example.foodapp.adapters.RecycleAdapterItem;
+import com.example.foodapp.models.Item;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,8 +33,8 @@ public class LootersActivity extends AppCompatActivity {
     private Button cart_butt;
     private RecyclerView recyclerView;
     private Button menu_butt;
-    private RecycleAdapter_Looters adapter;
-    private ArrayList<Item_Looters> items;
+    private RecycleAdapterItem adapter;
+    private ArrayList<Item> items;
     private String catItem="Pizzas";
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myRef;
@@ -96,10 +96,10 @@ public class LootersActivity extends AppCompatActivity {
                 try {
                     items.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Item_Looters item = ds.getValue(Item_Looters.class);
+                        Item item = ds.getValue(Item.class);
                         items.add(item);
                     }
-                    adapter = new RecycleAdapter_Looters(items, getApplicationContext());
+                    adapter = new RecycleAdapterItem(items, getApplicationContext());
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setAdapter(adapter);

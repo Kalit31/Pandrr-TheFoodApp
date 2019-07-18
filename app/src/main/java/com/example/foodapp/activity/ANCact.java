@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.foodapp.R;
-import com.example.foodapp.adapters.RecycleAdapter_ANC;
-import com.example.foodapp.models.Item_ANC;
+import com.example.foodapp.adapters.RecycleAdapterItem;
+import com.example.foodapp.models.Item;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,8 +31,8 @@ public class ANCact extends AppCompatActivity {
 
     private Button cart_butt,menu_butt;
     private RecyclerView recyclerView;
-    private RecycleAdapter_ANC adapter;
-    private ArrayList<Item_ANC> items;
+    private RecycleAdapterItem adapter;
+    private ArrayList<Item> items;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myRef;
     public static final int STATIC_INTEGER_VALUE=1;
@@ -95,10 +95,10 @@ public class ANCact extends AppCompatActivity {
                 try {
                     items.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Item_ANC item = ds.getValue(Item_ANC.class);
+                        Item item = ds.getValue(Item.class);
                         items.add(item);
                     }
-                    adapter = new RecycleAdapter_ANC(items, getApplicationContext());
+                    adapter = new RecycleAdapterItem(items, getApplicationContext());
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setAdapter(adapter);
