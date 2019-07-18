@@ -3,6 +3,7 @@ package com.example.foodapp.adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -57,6 +58,21 @@ public class RecycleAdapterItem extends RecyclerView.Adapter<RecycleAdapterItem.
             viewHolder.veg_icn.setImageResource(R.drawable.veg);
         else
             viewHolder.veg_icn.setImageResource(R.drawable.non_veg);
+        Cursor c = db.getElementByCode(items.get(i).getCode());
+        if(c != null && c.moveToFirst())
+        {
+            if(c.getInt(4)>0)
+            {
+                viewHolder.add_butt.setVisibility(View.INVISIBLE);
+                viewHolder.item_count_layout.setVisibility(View.VISIBLE);
+                viewHolder.countView.setText(String.valueOf(c.getInt(4)));
+            }
+        }
+        else
+        {
+            viewHolder.add_butt.setVisibility(View.VISIBLE);
+            viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
+        }
 
 
         viewHolder.add_butt.setOnClickListener(new View.OnClickListener() {
@@ -65,22 +81,39 @@ public class RecycleAdapterItem extends RecyclerView.Adapter<RecycleAdapterItem.
                 viewHolder.add_butt.setVisibility(View.INVISIBLE);
                 viewHolder.item_count_layout.setVisibility(View.VISIBLE);
                 db.putElement(items.get(i));
+                viewHolder.countView.setText("1");
             }
         });
 
         viewHolder.plus_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int q = items.get(i).getItemCount();
-                items.get(i).setItemCount(q+1);
+                Cursor c_plus = db.getElementByCode(items.get(i).getCode());
 
+                    c_plus.moveToFirst();
+                    int q = c_plus.getInt(4);
+
+
+                db.updateItem(items.get(i).getCode(),q+1);
+                viewHolder.countView.setText(String.valueOf(q+1));
             }
         });
         viewHolder.minus_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int q = items.get(i).getItemCount();
-                items.get(i).setItemCount(q-1);
+                Cursor c_minus = db.getElementByCode(items.get(i).getCode());
+
+                c_minus.moveToFirst();
+                int q = c_minus.getInt(4);
+                if(q == 1)
+                {
+                    viewHolder.add_butt.setVisibility(View.VISIBLE);
+                    viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
+                    int s = db.deleteData(items.get(i).getCode());
+
+                }
+                db.updateItem(items.get(i).getCode(),q-1);
+                viewHolder.countView.setText(String.valueOf(q-1));
             }
         });
     }

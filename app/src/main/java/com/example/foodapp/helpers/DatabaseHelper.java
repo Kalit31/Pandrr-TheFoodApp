@@ -62,13 +62,27 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public Cursor getElements(){
 
         SQLiteDatabase db =this.getWritableDatabase();
-
         return db.rawQuery("SELECT * FROM "+TABLE_NAME,null);
     }
 
-    public Cursor getElementByName(String note)
+    public Cursor getElementByCode(String code)
     {
         SQLiteDatabase db =this.getWritableDatabase();
-        return db.rawQuery("SELECT * FROM "+TABLE_NAME+"WHERE NOTE = ?",new String[]{note});
+        return db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE CODE =? ",new String[]{code});
+    }
+
+    public boolean updateItem(String code, int quantity)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMNS[1],code);
+        cv.put(COLUMNS[4],quantity);
+        db.update(TABLE_NAME,cv,"CODE = ?",new String[]{code});
+        return true;
+    }
+    public Integer deleteData(String code)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME,"CODE = ?",new String[]{code});
     }
 }
