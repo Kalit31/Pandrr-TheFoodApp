@@ -41,6 +41,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         return items.size();
     }
 
+
+    public void clear() {
+        int size = items.size();
+        items.clear();
+        notifyItemRangeRemoved(0, size);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
        TextView name, price, qty;

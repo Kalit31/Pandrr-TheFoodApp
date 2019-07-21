@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,14 +27,12 @@ public class RecycleAdapterItem extends RecyclerView.Adapter<RecycleAdapterItem.
 {
 
     private ArrayList<Item> items;
-    private SharedPreferences sharedPreferences;
     private Context context;
     private DatabaseHelper db;
     public RecycleAdapterItem(ArrayList<Item> items, Context context)
     {
         this.items = items;
         this.context = context;
-        sharedPreferences = context.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
     }
 
     @NonNull
@@ -58,6 +57,7 @@ public class RecycleAdapterItem extends RecyclerView.Adapter<RecycleAdapterItem.
             viewHolder.veg_icn.setImageResource(R.drawable.veg);
         else
             viewHolder.veg_icn.setImageResource(R.drawable.non_veg);
+
         Cursor c = db.getElementByCode(items.get(i).getCode());
         if(c != null && c.moveToFirst())
         {
@@ -127,7 +127,8 @@ public class RecycleAdapterItem extends RecyclerView.Adapter<RecycleAdapterItem.
 
         TextView name,countView;
         ImageView veg_icn;
-        Button add_butt,plus_butt,minus_butt;
+        Button add_butt;
+        ImageButton plus_butt,minus_butt;
         LinearLayout item_count_layout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -142,39 +143,3 @@ public class RecycleAdapterItem extends RecyclerView.Adapter<RecycleAdapterItem.
         }
     }
 }
-
-
-
-//                SharedPreferences.Editor editMinus = sharedPreferences.edit();
-//                editMinus.putInt(items.get(i).getCode(), sharedPreferences.getInt(items.get(i).getCode(),0)-1);
-//                editMinus.apply();
-//                if(sharedPreferences.getInt(items.get(i).getCode(), 0 ) <= 0)
-//                {
-//                    viewHolder.add_butt.setVisibility(View.VISIBLE);
-//                    viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
-//                }
-//                else {
-//                    viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0)));
-//                }
-
-//                SharedPreferences.Editor editPlus = sharedPreferences.edit();
-//                editPlus.putInt(items.get(i).getCode(), sharedPreferences.getInt(items.get(i).getCode(),0)+1);
-//                editPlus.apply();
-//                viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0 )));
-
-//viewHolder.add_butt.setVisibility(View.INVISIBLE);
-////                viewHolder.item_count_layout.setVisibility(View.VISIBLE);
-////                SharedPreferences.Editor edit = sharedPreferences.edit();
-////                edit.putInt(items.get(i).getCode(), 1);
-////                edit.apply();
-////                viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 0 )));
-
-//if (sharedPreferences.getInt(items.get(i).getCode(), 0) == 0) {
-////            viewHolder.add_butt.setVisibility(View.VISIBLE);
-////            viewHolder.item_count_layout.setVisibility(View.INVISIBLE);
-////        } else {
-////            viewHolder.add_butt.setVisibility(View.INVISIBLE);
-////            viewHolder.item_count_layout.setVisibility(View.VISIBLE);
-////            viewHolder.countView.setText(Integer.toString(sharedPreferences.getInt(items.get(i).getCode(), 1)));
-////
-////        }

@@ -12,19 +12,21 @@
             android:id="@+id/veg_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:foregroundGravity="left"
             android:layout_gravity="center|left"
             android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/item"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="5"
-            android:gravity="center|left"
-            android:text="@string/item_name"
-            android:textColor="#000000"
-            android:textSize="16sp" />
+    <TextView
+        android:id="@+id/item"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="5"
+        android:fontFamily="@font/raleway_semibold"
+        android:gravity="center|left"
+        android:text="@string/item_name"
+        android:textColor="#000000"
+        android:textSize="16sp" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -53,12 +55,13 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:visibility="invisible">
-                <Button
+                <ImageButton
                     android:id="@+id/minus_butt"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:background="@drawable/minus"
+                    android:background="@drawable/plus_butt"
+                    android:src="@drawable/ic_remove_24dp"
                     android:gravity="center|left"
                     />
 
@@ -69,13 +72,16 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="0"
-                    android:textColor="#3F51B5"/>
-                <Button
+                    android:textColor="#2BD5F7"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <ImageButton
                     android:id="@+id/plus_butt"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:background="@drawable/plus_butt"
                     android:layout_weight="1"
-                    android:background="@drawable/plus"/>
+                    android:src="@drawable/ic_add_24dp"/>
 
             </LinearLayout>
         </RelativeLayout>

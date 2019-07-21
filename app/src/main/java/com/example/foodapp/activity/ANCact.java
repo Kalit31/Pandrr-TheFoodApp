@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodapp.R;
@@ -38,7 +39,7 @@ public class ANCact extends AppCompatActivity {
     public static final int STATIC_INTEGER_VALUE=1;
     private String catItem="Sandwiches";
     private ProgressDialog progressDialog;
-
+    private  TextView subCat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +50,12 @@ public class ANCact extends AppCompatActivity {
         cart_butt = findViewById(R.id.cart_butt);
         menu_butt = findViewById(R.id.menu_anc_btn);
         recyclerView = findViewById(R.id.anc_rv);
-
+        subCat = findViewById(R.id.sub_category);
+        subCat.setText(catItem);
         cart_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent cartIntent = new Intent(ANCact.this, CartActivity.class);
+                Intent cartIntent = new Intent(ANCact.this, CartActivity_ANC.class);
                 startActivity(cartIntent);
             }
         });
@@ -78,6 +80,7 @@ public class ANCact extends AppCompatActivity {
         if(requestCode == STATIC_INTEGER_VALUE && resultCode == Activity.RESULT_OK)
         {
             catItem = data.getStringExtra(PUBLIC_STATIC_STRING_IDENTIFIER);
+            subCat.setText(catItem);
         }
     }
 

@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodapp.R;
@@ -39,6 +40,7 @@ public class LootersActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myRef;
     private ProgressDialog progressDialog;
+    private TextView subCat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +52,12 @@ public class LootersActivity extends AppCompatActivity {
         cart_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent cartIntent = new Intent(LootersActivity.this, CartActivity.class);
+                Intent cartIntent = new Intent(LootersActivity.this, CartActivity_Looters.class);
                 startActivity(cartIntent);
             }
         });
-
+        subCat = findViewById(R.id.sub_category);
+        subCat.setText(catItem);
         menu_butt = findViewById(R.id.menu_looters_btn);
         recyclerView = findViewById(R.id.looters_rv);
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -79,6 +82,7 @@ public class LootersActivity extends AppCompatActivity {
         if(requestCode == STATIC_INTEGER_VALUE && resultCode == Activity.RESULT_OK)
         {
             catItem = data.getStringExtra(PUBLIC_STATIC_STRING_IDENTIFIER);
+            subCat.setText(catItem);
         }
     }
 
