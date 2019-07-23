@@ -20,7 +20,7 @@ public class PopUpANC extends AppCompatActivity {
         setContentView(R.layout.activity_pop_up_anc);
 
         DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm)   ;
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;

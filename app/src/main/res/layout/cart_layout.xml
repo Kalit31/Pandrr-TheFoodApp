@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:id="@+id/linear_layout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_layout"
 android:layout_width="match_parent"
 android:layout_height="90dp"
 android:clipToPadding="true"
 android:orientation="horizontal"
-android:paddingRight="10dp">
+android:paddingEnd="10dp"
+    tools:ignore="RtlSymmetry">
 
 
 <LinearLayout
@@ -20,10 +22,11 @@ android:paddingRight="10dp">
     android:layout_gravity="center"
     android:layout_weight="0.5"
     android:gravity="center|left"
-    android:paddingLeft="10dp"
+    android:paddingStart="10dp"
     android:text="@string/item_name"
     android:textColor="#000000"
-    android:textSize="18sp"/>
+    android:textSize="18sp"
+    tools:ignore="RtlHardcoded,RtlSymmetry" />
 
 <TextView
     android:id="@+id/qty"
@@ -31,7 +34,7 @@ android:paddingRight="10dp">
     android:layout_height="match_parent"
     android:layout_weight="0.2"
     android:gravity="center"
-    android:text="qty"
+    android:text="@string/qty"
     android:textColor="#000000"
     />
 <TextView
@@ -40,7 +43,7 @@ android:paddingRight="10dp">
     android:layout_height="match_parent"
     android:layout_weight="0.3"
     android:gravity="center"
-    android:text="price"
+    android:text="@string/price"
     android:textColor="#000000"
     />
 </LinearLayout>
