@@ -3,12 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:background="@drawable/borders"
+    android:layout_height="85dp"
     android:clipToPadding="true"
     android:orientation="horizontal">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/borders"
+        tools:ignore="MissingConstraints"
 
+        >
     <TextView
         android:id="@+id/item"
         android:layout_width="0dp"
@@ -16,14 +21,15 @@
         android:layout_gravity="center"
         android:fontFamily="@font/raleway_semibold"
         android:gravity="center|left"
-        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
         android:text="@string/item_name"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline50"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/guideline49"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlHardcoded,RtlSymmetry" />
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -59,19 +65,18 @@
 
             <ImageButton
                 android:id="@+id/minus_butt"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_alignStart="@+id/item_count_layout"
-                android:layout_weight="1"
                 android:background="@drawable/plus_butt"
                 android:gravity="center|left"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_remove_24dp" />
 
             <TextView
                 android:id="@+id/countView"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:text="0"
                 android:textColor="#2BD5F7"
@@ -80,10 +85,10 @@
 
             <ImageButton
                 android:id="@+id/plus_butt"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:background="@drawable/plus_butt"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_add_24dp" />
 
         </LinearLayout>
@@ -121,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.70" />
+        app:layout_constraintGuide_percent="0.65" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline51"
@@ -129,5 +134,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

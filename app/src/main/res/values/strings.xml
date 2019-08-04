@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name">Pandrr</string>
+    <string name="app_name">Snaccman</string>
     <string name="anc">ANC</string>
     <string name="looters">Looters</string>
     <string name="others">Others</string>
     <string name="menu">MENU</string>
-    <string name="pandrr">Pandrr</string>
     <string name="app_info">App Info</string>
     <string name="info_about_app_here">Info about app here</string>
     <string name="info_about_creators_here">Info about creators here</string>
@@ -34,5 +33,6 @@
     <string name="sub_category">Sub Category</string>
     <string name="empty_cart">Empty Cart</string>
     <string name="total_amount_here">Total: *amount here</string>
+    <string name="counter_number">Counter Number</string>
 
 </resources>

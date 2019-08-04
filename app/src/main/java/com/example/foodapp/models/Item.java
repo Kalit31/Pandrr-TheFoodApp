@@ -4,18 +4,28 @@ public class Item
 {
     private String name,price,counter,code;
     private int itemCount = 1;
+    private int viewType;
     private boolean type;
 
     public Item() {
     }
 
-    public Item(String name, String price, boolean type, String counter, int itemCount, String code) {
+    public Item(String name, String price, boolean type, String counter, int itemCount, String code, int viewType) {
         this.name = name;
         this.price = price;
         this.type = type;
         this.counter = counter;
         this.itemCount = itemCount;
         this.code = code;
+        this.viewType = viewType;
+    }
+
+    public int getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(int viewType) {
+        this.viewType = viewType;
     }
 
     public String getCode() {

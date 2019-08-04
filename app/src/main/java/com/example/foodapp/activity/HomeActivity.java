@@ -22,7 +22,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         info_butt = findViewById(R.id.info_button);
-        others_butt= findViewById(R.id.others_butt);
         anc_butt = findViewById(R.id.anc_butt);
         looters_butt = findViewById(R.id.looters_butt);
 
@@ -31,13 +30,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent infointent = new Intent(HomeActivity.this, InfoActivity.class);
                 startActivity(infointent);
-            }
-        });
-        others_butt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent others = new Intent(HomeActivity.this, OthersAct.class);
-                startActivity(others);
             }
         });
         anc_butt.setOnClickListener(new View.OnClickListener() {

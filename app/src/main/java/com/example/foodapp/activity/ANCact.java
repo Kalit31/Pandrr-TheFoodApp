@@ -3,6 +3,7 @@ package com.example.foodapp.activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,7 +40,7 @@ public class ANCact extends AppCompatActivity {
     public static final int STATIC_INTEGER_VALUE=1;
     private String catItem="Sandwiches";
     private ProgressDialog progressDialog;
-    private  TextView subCat;
+    private  TextView subCat,tV_anc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,10 @@ public class ANCact extends AppCompatActivity {
                 startActivity(cartIntent);
             }
         });
-
+        tV_anc = findViewById(R.id.tV_anc);
+        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/adam.otf");
+        tV_anc.setTypeface(font);
+        menu_butt.setTypeface(font);
         firebaseDatabase = FirebaseDatabase.getInstance();
         items = new ArrayList<>();
 
@@ -94,7 +98,7 @@ public class ANCact extends AppCompatActivity {
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@android.support.annotation.NonNull @NonNull DataSnapshot dataSnapshot) {
                 try {
                     items.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -115,7 +119,7 @@ public class ANCact extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(@android.support.annotation.NonNull @NonNull DatabaseError databaseError) {
                 Toast.makeText(getApplicationContext(),databaseError.toString(),Toast.LENGTH_LONG).show();
             }
         });

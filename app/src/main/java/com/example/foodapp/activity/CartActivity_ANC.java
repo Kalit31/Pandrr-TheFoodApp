@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.foodapp.R;
 import com.example.foodapp.adapters.CartAdapter;
+import com.example.foodapp.common.Common;
 import com.example.foodapp.helpers.DatabaseHelper;
 import com.example.foodapp.models.Item;
 
@@ -40,6 +42,7 @@ public class  CartActivity_ANC extends AppCompatActivity {
         tV_total = findViewById(R.id.tV_total_anc);
         items = new ArrayList<Item>();
         uniqueItems = new ArrayList<String>();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView = findViewById(R.id.recycler_cart_anc);
         Button empty = findViewById(R.id.empty_anc);
          if(c.getCount()>0)
@@ -52,7 +55,7 @@ public class  CartActivity_ANC extends AppCompatActivity {
                 String counter = c.getString(3);
                 int qty = c.getInt(4);
                 String price = c.getString(5);
-                Item ob = new Item(name,price, false,counter,qty,code);
+                Item ob = new Item(name,price, false,counter,qty,code,-1);
                 total = total + qty*Integer.parseInt(price);
                 if(!uniqueItems.contains(code)) {
                     if(Integer.parseInt(code)<100) {
@@ -72,10 +75,12 @@ public class  CartActivity_ANC extends AppCompatActivity {
                 tV_total.setText("Total: "+ 0);
             }
         });
+         items = Common.sortList(items);
+         items = Common.addCounters(items);
         adapter = new CartAdapter(items);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(layoutManager);
         tV_total.setText("Total: "+ total);
     }
 }

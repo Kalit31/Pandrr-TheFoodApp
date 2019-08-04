@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.foodapp.R;
 import com.example.foodapp.adapters.CartAdapter;
+import com.example.foodapp.common.Common;
 import com.example.foodapp.helpers.DatabaseHelper;
 import com.example.foodapp.models.Item;
 
@@ -37,9 +38,10 @@ public class CartActivity_Looters extends AppCompatActivity {
         setContentView(R.layout.activity_cart_looters);
         int total = 0;
         tV_total = findViewById(R.id.tV_total);
-        items = new ArrayList<Item>();
-        uniqueItems = new ArrayList<String>();
+        items = new ArrayList<>();
+        uniqueItems = new ArrayList<>();
         tV_cart_code = findViewById(R.id.tV_cart_code);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView = findViewById(R.id.recycler_cart);
         Button empty = findViewById(R.id.empty);
         db = new DatabaseHelper(this);
@@ -55,7 +57,7 @@ public class CartActivity_Looters extends AppCompatActivity {
                 String counter = c.getString(3);
                 int qty = c.getInt(4);
                 String price = c.getString(5);
-                Item ob = new Item(name,price, false,counter,qty,code);
+                Item ob = new Item(name,price, false,counter,qty,code,-1);
                 total = total + qty*Integer.parseInt(price);
                 if(!uniqueItems.contains(code)) {
                     if(Integer.parseInt(code)>100) {
@@ -65,7 +67,8 @@ public class CartActivity_Looters extends AppCompatActivity {
                 }
             }while(c.moveToNext());
         }
-
+        items = Common.sortList(items);
+        items = Common.addCounters(items);
         adapter = new CartAdapter(items);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
@@ -99,9 +102,9 @@ public class CartActivity_Looters extends AppCompatActivity {
                         String price = cursor.getString(5);
                         Item ob;
                         if(flag == 0) {
-                             ob = new Item(code, price, false, counter, qty, code);
+                             ob = new Item(code, price, false, counter, qty, code,-1);
                         }else {
-                             ob = new Item(name, price, false, counter, qty, code);
+                             ob = new Item(name, price, false, counter, qty, code,-1);
                         }
                         if(!uniqueItems.contains(code)) {
                             if(Integer.parseInt(code)>100) {
@@ -115,6 +118,8 @@ public class CartActivity_Looters extends AppCompatActivity {
                     else
                         flag =0;
                 }
+                items = Common.sortList(items);
+                items = Common.addCounters(items);
                 adapter = new CartAdapter(items);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setHasFixedSize(true);

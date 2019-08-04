@@ -3,6 +3,7 @@ package com.example.foodapp.activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -40,7 +41,7 @@ public class LootersActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myRef;
     private ProgressDialog progressDialog;
-    private TextView subCat;
+    private TextView subCat,tv_looters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,10 @@ public class LootersActivity extends AppCompatActivity {
         subCat.setText(catItem);
         menu_butt = findViewById(R.id.menu_looters_btn);
         recyclerView = findViewById(R.id.looters_rv);
+        tv_looters = findViewById(R.id.tV_looters);
+        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/adam.otf");
+        tv_looters.setTypeface(font);
+        menu_butt.setTypeface(font);
         firebaseDatabase = FirebaseDatabase.getInstance();
         items = new ArrayList<>();
 
@@ -81,7 +86,9 @@ public class LootersActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == STATIC_INTEGER_VALUE && resultCode == Activity.RESULT_OK)
         {
-            catItem = data.getStringExtra(PUBLIC_STATIC_STRING_IDENTIFIER);
+            if (data != null) {
+                catItem = data.getStringExtra(PUBLIC_STATIC_STRING_IDENTIFIER);
+            }
             subCat.setText(catItem);
         }
     }
