@@ -37,7 +37,7 @@ public class CartActivity_Looters extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_looters);
         int total = 0;
-        tV_total = findViewById(R.id.tV_total);
+        tV_total = findViewById(R.id.tV_total_looters);
         items = new ArrayList<>();
         uniqueItems = new ArrayList<>();
         tV_cart_code = findViewById(R.id.tV_cart_code);
@@ -58,10 +58,11 @@ public class CartActivity_Looters extends AppCompatActivity {
                 int qty = c.getInt(4);
                 String price = c.getString(5);
                 Item ob = new Item(name,price, false,counter,qty,code,-1);
-                total = total + qty*Integer.parseInt(price);
+
                 if(!uniqueItems.contains(code)) {
                     if(Integer.parseInt(code)>100) {
                         items.add(ob);
+                        total = total + qty*Integer.parseInt(price);
                         uniqueItems.add(code);
                     }
                 }

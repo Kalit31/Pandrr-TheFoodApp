@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
     android:orientation="vertical"
     android:padding="8dp"
     >
@@ -10,12 +11,8 @@
         android:id="@+id/counter_grp_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fontFamily="@font/raleway_semibold"
-        android:padding="8dp"
-        android:text="@string/counter_number"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        />
+        android:background="@drawable/group_divider"
+        android:shadowColor="#CDDC39" />
 
 
 

@@ -21,28 +21,27 @@ public class Common
         return items;
     }
 
-    public static ArrayList<Item> addCounters(ArrayList<Item> list)
-    {
-        int i;
+    public static ArrayList<Item> addCounters(ArrayList<Item> list) {
+        int i = 0;
         ArrayList<Item> customList = new ArrayList<>();
         Item firstItem = new Item();
-        firstItem.setCounter(list.get(0).getCounter());
+
+        if(!list.isEmpty())
+        {
+            firstItem.setCounter(list.get(0).getCounter());
+
         firstItem.setViewType(VIEWTYPE_GROUP);
         counters_available.add(list.get(0).getCounter());
         customList.add(firstItem);
 
-        for(i=0;i<list.size()-1;i++)
-        {
+        for (; i < list.size() - 1; i++) {
             Item item = new Item();
             int cntr1 = Integer.parseInt(list.get(i).getCounter());
-            int cntr2 = Integer.parseInt(list.get(i+1).getCounter());
-            if(cntr1 == cntr2)
-            {
+            int cntr2 = Integer.parseInt(list.get(i + 1).getCounter());
+            if (cntr1 == cntr2) {
                 list.get(i).setViewType(VIEWTYPE_ITEM);
                 customList.add(list.get(i));
-            }
-            else
-            {
+            } else {
                 list.get(i).setViewType(VIEWTYPE_ITEM);
                 customList.add(list.get(i));
                 item.setCounter(String.valueOf(cntr2));
@@ -53,6 +52,7 @@ public class Common
         }
         list.get(i).setViewType(VIEWTYPE_ITEM);
         customList.add(list.get(i));
+        }
         return customList;
     }
     public static int findPositionByCounter(String counter, ArrayList<Item> items)

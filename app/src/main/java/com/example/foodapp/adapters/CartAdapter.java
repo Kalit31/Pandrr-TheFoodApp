@@ -48,8 +48,8 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if(viewHolder instanceof GroupViewHolder)
         {
             GroupViewHolder groupViewHolder = (GroupViewHolder)viewHolder;
-            groupViewHolder.counter_title.setText(String.format("Counter Number: %s", items.get(i).getCounter()));
-        }
+//            groupViewHolder.counter_title.setText(String.format("Counter Number: %s", items.get(i).getCounter()));
+       }
         else if(viewHolder instanceof ItemViewHolder)
         {
             ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
